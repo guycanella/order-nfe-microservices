@@ -1,4 +1,4 @@
-import { FastifyInstance } from "fastify"
+import type { FastifyInstance } from "fastify"
 import z from "zod"
 
 import { createOrder } from "../services/order-service.ts"
@@ -16,7 +16,7 @@ export async function orderRoutes(app: FastifyInstance) {
 
             if (!validation.success) {
                 reply.status(400).send({
-                    error: "Invalid request body",
+                    error: "Validation failed",
                     message: validation.error.message
                 })
 
