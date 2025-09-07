@@ -8,6 +8,9 @@ dependencies:
   '@fastify/cors':
     specifier: 7.0.0
     version: 7.0.0
+  '@types/pg':
+    specifier: ^8.15.5
+    version: 8.15.5
   amqplib:
     specifier: ^0.10.9
     version: 0.10.9
@@ -16,7 +19,7 @@ dependencies:
     version: 17.2.2
   drizzle-orm:
     specifier: ^0.44.5
-    version: 0.44.5(pg@8.16.3)
+    version: 0.44.5(@types/pg@8.15.5)(pg@8.16.3)
   fastify:
     specifier: ^5.6.0
     version: 5.6.0
@@ -314,7 +317,14 @@ packages:
     resolution: {integrity: sha512-3vXmQDXy+woz+gnrTvuvNrPzekOi+Ds0ReMxw0LzBiK3a+1k0kQn9f2NWk+lgD4rJehFUmYy2gMhJ2ZI+7YP9g==}
     dependencies:
       undici-types: 7.10.0
-    dev: true
+
+  /@types/pg@8.15.5:
+    resolution: {integrity: sha512-LF7lF6zWEKxuT3/OR8wAZGzkg4ENGXFNyiV/JeOt9z5B+0ZVwbql9McqX5c/WStFq1GaGso7H1AzP/qSzmlCKQ==}
+    dependencies:
+      '@types/node': 24.3.1
+      pg-protocol: 1.10.3
+      pg-types: 2.2.0
+    dev: false
 
   /@types/strip-bom@3.0.0:
     resolution: {integrity: sha512-xevGOReSYGM7g/kUBZzPqCrR/KYAo+F0yiPc85WFTJa0MSLtyFTVTU6cJu/aV4mid7IffDIWqo69THF2o4JiEQ==}
@@ -756,7 +766,7 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /drizzle-orm@0.44.5(pg@8.16.3):
+  /drizzle-orm@0.44.5(@types/pg@8.15.5)(pg@8.16.3):
     resolution: {integrity: sha512-jBe37K7d8ZSKptdKfakQFdeljtu3P2Cbo7tJoJSVZADzIKOBo9IAJPOmMsH2bZl90bZgh8FQlD8BjxXA/zuBkQ==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -848,6 +858,7 @@ packages:
       sqlite3:
         optional: true
     dependencies:
+      '@types/pg': 8.15.5
       pg: 8.16.3
     dev: false
 
@@ -2111,7 +2122,6 @@ packages:
 
   /undici-types@7.10.0:
     resolution: {integrity: sha512-t5Fy/nfn+14LuOc2KNYg75vZqClpAiqscVvMygNnlsHBFpSXdJaYtXMcdNLpl/Qvc3P2cB3s6lOV51nqsFq4ag==}
-    dev: true
 
   /uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
