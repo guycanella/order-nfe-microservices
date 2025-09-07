@@ -1,21 +1,16 @@
 import { expect } from "chai"
-
-import * as rabbit from "../../src/brokers/rabbitmq.ts"
-import { ErrorHandler } from "../../src/utils/ErrorHandler.ts"
+import * as rabbitmq from "../../src/brokers/rabbitmq.ts"
 
 describe("RabbitMQ Broker", () => {
   it("should throw if publishEvent is called before init", async () => {
     let err: Error | null = null
-
     try {
-      await rabbit.publishEvent("order_created", "Test message")
-    } catch (error) {
-      ErrorHandler.handle({
-        error,
-        origin: "RabbitMQ Broker Test",
-      })
+      await rabbitmq.publishEvent("test-queue", "hello")
+    } catch (e) {
+      err = e as Error
     }
 
     expect(err).to.not.be.null
+    expect(err?.message).to.equal("RabbitMQ not initialized")
   })
 })
