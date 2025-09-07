@@ -29,6 +29,20 @@ services:
     networks:
       - microservices-network
 
+  postgres-order-test:
+    image: postgres:17
+    container_name: postgres-order-test
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_DB: order_test_db
+      POSTGRES_USER: order_test_user
+      POSTGRES_PASSWORD: order_test_pass
+    volumes:
+      - postgres_order_test_data:/var/lib/postgresql/data
+    networks:
+      - microservices-network
+
   # PostgreSQL for NFE Service
   postgres-nfe:
     image: postgres:17
