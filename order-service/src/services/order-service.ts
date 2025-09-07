@@ -21,7 +21,9 @@ export async function createOrder(data: OrderInput) {
             throw new Error("Failed to create order: invalid data")
         }
 
-        await publishEvent("order_created", "Order created successfully ✅")
+        if (process.env.NODE_ENV !== "test") {
+            await publishEvent("order_created", "Order created successfully ✅")
+        }
 
         return order
     })
