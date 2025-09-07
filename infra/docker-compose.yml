@@ -1,0 +1,72 @@
+services:
+  # RabbitMQ - Message Broker
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"     # AMQP port
+      - "15672:15672"   # Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin123
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - microservices-network
+
+  # PostgreSQL for Order Service
+  postgres-order:
+    image: postgres:17
+    container_name: postgres-order
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: order_db
+      POSTGRES_USER: order_user
+      POSTGRES_PASSWORD: order_pass
+    volumes:
+      - postgres_order_data:/var/lib/postgresql/data
+    networks:
+      - microservices-network
+
+  # PostgreSQL for NFE Service
+  postgres-nfe:
+    image: postgres:17
+    container_name: postgres-nfe
+    ports:
+      - "5433:5432"     # porta diferente para não conflitar
+    environment:
+      POSTGRES_DB: nfe_db
+      POSTGRES_USER: nfe_user
+      POSTGRES_PASSWORD: nfe_pass
+    volumes:
+      - postgres_nfe_data:/var/lib/postgresql/data
+    networks:
+      - microservices-network
+
+  # pgAdmin - Database Management UI (opcional, mas útil)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    ports:
+      - "8080:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - microservices-network
+    depends_on:
+      - postgres-order
+      - postgres-nfe
+
+volumes:
+  rabbitmq_data:
+  postgres_order_data:
+  postgres_nfe_data:
+  pgadmin_data:
+
+networks:
+  microservices-network:
+    driver: bridge
