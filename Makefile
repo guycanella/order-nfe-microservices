@@ -30,19 +30,19 @@ infra-clean:
 # Service commands
 order-dev:
 	@echo "🏃 Running order-service in dev mode..."
-	@(cd ../order-service && pnpm run dev)
+	@(cd order-service && pnpm run dev)
 
 nfe-dev:
 	@echo "🏃 Running nfe-service in dev mode..."
-	@(cd ../nfe-service && pnpm run dev)
+	@(cd nfe-service && pnpm run dev)
 
 order-test:
 	@echo "🧪 Running order-service tests..."
-	@(cd ../order-service && pnpm test)
+	@(cd order-service && pnpm test)
 
 nfe-test:
 	@echo "🧪 Running nfe-service tests..."
-	@(cd ../nfe-service && pnpm test)
+	@(cd nfe-service && pnpm test)
 
 # Combined commands
 dev-all: infra-up
