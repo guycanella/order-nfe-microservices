@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc -p tsconfig.json",
     "start": "node dist/app.js",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
-    "test": "mocha -r ts-node/register 'test/**/*.spec.ts'"
+    "test": "mocha -r ts-node/register 'test/**/*.spec.ts'",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +34,7 @@
     "@typescript-eslint/eslint-plugin": "^8.42.0",
     "@typescript-eslint/parser": "^8.42.0",
     "chai": "^6.0.1",
+    "drizzle-kit": "^0.31.4",
     "eslint": "^9.35.0",
     "mocha": "^11.7.2",
     "prettier": "^3.6.2",
