@@ -1,5 +1,5 @@
-import { InferInsertModel, InferSelectModel } from "drizzle-orm";
-import { pgTable, integer, uuid, text, timestamp } from "drizzle-orm/pg-core";
+import { InferInsertModel, InferSelectModel } from "drizzle-orm"
+import { pgTable, integer, uuid, text, timestamp } from "drizzle-orm/pg-core"
 
 export const orders = pgTable("orders", {
     id: uuid("id").defaultRandom().primaryKey(),
@@ -8,5 +8,5 @@ export const orders = pgTable("orders", {
     createdAt: timestamp("created_at").defaultNow().notNull()
 })
 
-export type Order = InferSelectModel<typeof orders>;
-export type NewOrder = InferInsertModel<typeof orders>;
+export type Order = InferSelectModel<typeof orders>
+export type NewOrder = InferInsertModel<typeof orders>

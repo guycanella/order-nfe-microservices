@@ -1,5 +1,5 @@
-import amqplib from 'amqplib';
-import { env } from '../config/env'
+import amqplib from 'amqplib'
+import { env } from '../config/env.ts'
 
 let channel: amqplib.Channel | null = null
 

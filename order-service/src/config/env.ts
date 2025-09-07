@@ -1,6 +1,6 @@
-import * as dotenv from 'dotenv';
+import * as dotenv from 'dotenv'
 
-dotenv.config();
+dotenv.config()
 
 export const env = {
     NODE_ENV: process.env.NODE_ENV || 'development',
