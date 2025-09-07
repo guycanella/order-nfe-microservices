@@ -1,6 +1,6 @@
-import { publishEvent } from "../brokers/rabbitmq"
-import { db } from "../db"
-import { orders } from "../db/schema"
+import { publishEvent } from "../brokers/rabbitmq.ts"
+import { db } from "../db/index.ts"
+import { orders } from "../db/schema.ts"
 
 type OrderInput = {
     product: string
