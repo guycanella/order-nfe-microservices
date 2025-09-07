@@ -78,6 +78,7 @@ services:
 volumes:
   rabbitmq_data:
   postgres_order_data:
+  postgres_order_test_data:
   postgres_nfe_data:
   pgadmin_data:
 
